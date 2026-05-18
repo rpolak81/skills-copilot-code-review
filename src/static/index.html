@@ -17,6 +17,9 @@
       <h2>Extracurricular Activities</h2>
       <div id="user-controls">
         <div id="user-status">
+          <button id="manage-announcements-button" class="icon-button hidden">
+            <span>Manage Announcements</span>
+          </button>
           <button id="login-button" class="icon-button">
             <span class="user-icon">👤</span>
             <span>Login</span>
@@ -30,6 +33,10 @@
     </header>
 
     <main>
+      <section id="announcement-panel" class="announcement-panel hidden">
+        <div id="announcement-list" class="announcement-list"></div>
+      </section>
+
       <section id="activities-container">
         <div class="main-content-layout">
           <!-- Left Sidebar for Filters -->
@@ -131,6 +138,43 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcement Management Modal -->
+    <div id="announcement-modal" class="modal hidden">
+      <div class="modal-content announcement-modal-content">
+        <span class="close-announcement-modal">&times;</span>
+        <h3>Manage Announcements</h3>
+        <form id="announcement-form">
+          <input type="hidden" id="announcement-id" value="" />
+          <div class="form-group">
+            <label for="announcement-title">Title:</label>
+            <input type="text" id="announcement-title" required maxlength="120" placeholder="Announcement title" />
+          </div>
+          <div class="form-group">
+            <label for="announcement-message">Message:</label>
+            <textarea id="announcement-message" required maxlength="1000" placeholder="Write your announcement"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="announcement-starts-at">Start Date (optional):</label>
+              <input type="date" id="announcement-starts-at" />
+            </div>
+            <div class="form-group">
+              <label for="announcement-expires-at">Expiration Date:</label>
+              <input type="date" id="announcement-expires-at" required />
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" id="announcement-save-button">Save Announcement</button>
+            <button type="button" id="announcement-reset-button" class="secondary-button">Clear</button>
+          </div>
+        </form>
+        <div class="announcement-admin-list-wrap">
+          <h4>Existing Announcements</h4>
+          <div id="announcement-admin-list" class="announcement-admin-list"></div>
+        </div>
       </div>
     </div>
 
